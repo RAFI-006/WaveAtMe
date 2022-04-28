@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/WaveAtMe/static/css/main.c7d5add7.css",
-    "main.js": "/WaveAtMe/static/js/main.cbce3f85.js",
-    "static/js/787.4932588b.chunk.js": "/WaveAtMe/static/js/787.4932588b.chunk.js",
-    "index.html": "/WaveAtMe/index.html",
-    "main.c7d5add7.css.map": "/WaveAtMe/static/css/main.c7d5add7.css.map",
-    "main.cbce3f85.js.map": "/WaveAtMe/static/js/main.cbce3f85.js.map",
-    "787.4932588b.chunk.js.map": "/WaveAtMe/static/js/787.4932588b.chunk.js.map"
+    "main.css": "/wave-me/static/css/main.c7d5add7.css",
+    "main.js": "/wave-me/static/js/main.509f1a00.js",
+    "static/js/787.a4241258.chunk.js": "/wave-me/static/js/787.a4241258.chunk.js",
+    "index.html": "/wave-me/index.html",
+    "main.c7d5add7.css.map": "/wave-me/static/css/main.c7d5add7.css.map",
+    "main.509f1a00.js.map": "/wave-me/static/js/main.509f1a00.js.map",
+    "787.a4241258.chunk.js.map": "/wave-me/static/js/787.a4241258.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7d5add7.css",
-    "static/js/main.cbce3f85.js"
+    "static/js/main.509f1a00.js"
   ]
 }
