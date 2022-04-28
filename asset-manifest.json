@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/RAFI-006/WaveAtMe%20/static/css/main.c7d5add7.css",
-    "main.js": "/RAFI-006/WaveAtMe%20/static/js/main.2f9aa21f.js",
-    "static/js/787.a4241258.chunk.js": "/RAFI-006/WaveAtMe%20/static/js/787.a4241258.chunk.js",
-    "index.html": "/RAFI-006/WaveAtMe%20/index.html",
-    "main.c7d5add7.css.map": "/RAFI-006/WaveAtMe%20/static/css/main.c7d5add7.css.map",
-    "main.2f9aa21f.js.map": "/RAFI-006/WaveAtMe%20/static/js/main.2f9aa21f.js.map",
-    "787.a4241258.chunk.js.map": "/RAFI-006/WaveAtMe%20/static/js/787.a4241258.chunk.js.map"
+    "main.css": "/RAFI-006/WaveAtMe/static/css/main.c7d5add7.css",
+    "main.js": "/RAFI-006/WaveAtMe/static/js/main.8cc7c0ad.js",
+    "static/js/787.a4241258.chunk.js": "/RAFI-006/WaveAtMe/static/js/787.a4241258.chunk.js",
+    "index.html": "/RAFI-006/WaveAtMe/index.html",
+    "main.c7d5add7.css.map": "/RAFI-006/WaveAtMe/static/css/main.c7d5add7.css.map",
+    "main.8cc7c0ad.js.map": "/RAFI-006/WaveAtMe/static/js/main.8cc7c0ad.js.map",
+    "787.a4241258.chunk.js.map": "/RAFI-006/WaveAtMe/static/js/787.a4241258.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7d5add7.css",
-    "static/js/main.2f9aa21f.js"
+    "static/js/main.8cc7c0ad.js"
   ]
 }
