@@ -95,55 +95,53 @@ const getAllWaves = async () => {
 
   
 
-//     useEffect(async() =>  {
-//  if (window.ethereum)
-//  {  
-//      if(window.ethereum.networkVersion == 4)
-//      {
+    useEffect(() =>  {
+ if (window.ethereum)
+ {  
+     if(window.ethereum.networkVersion == 4)
+     {
       
-//       getAllWaves();
-//      }
-//     else
-//        alert("Change network to Rinkeby Test Network");
+      getAllWaves();
+     }
+    else
+       alert("Change network to Rinkeby Test Network");
 
-//        return () => {
-//         console.log("This will be logged on unmount");
-//       }
-//  }
+      
+ }
  
-//     let wavePortalContract;
+    let wavePortalContract;
 
-//     const onNewWave = (from, timestamp, message) => {
-//       console.log('NewWave', from, timestamp, message);
-//       setAllWaves((prevState) => [
-//         ...prevState,
-//         {
-//           address: from,
-//           timestamp: new Date(timestamp * 1000),
-//           message: message,
-//         },
-//       ]);
-//     };
+  
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
 
-//     if (window.ethereum) {
-//       const provider = new ethers.providers.Web3Provider(window.ethereum);
-//       const signer = provider.getSigner();
+      wavePortalContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+      wavePortalContract.on('NewWave', onNewWave);
+    }
 
-//       wavePortalContract = new ethers.Contract(
-//         contractAddress,
-//         contractABI,
-//         signer
-//       );
-//       wavePortalContract.on('NewWave', onNewWave);
-//     }
+    return () => {
+      if (wavePortalContract) {
+        wavePortalContract.off('NewWave', onNewWave);
+      }
+    };
+  }, []);
 
-//     return () => {
-//       if (wavePortalContract) {
-//         wavePortalContract.off('NewWave', onNewWave);
-//       }
-//     };
-//   }, []);
-
+  const onNewWave = (from, timestamp, message) => {
+    console.log('NewWave', from, timestamp, message);
+    setAllWaves((prevState) => [
+      ...prevState,
+      {
+        address: from,
+        timestamp: new Date(timestamp * 1000),
+        message: message,
+      },
+    ]);
+  };
 
  const wave = async (message) => {
    if(message == "")
