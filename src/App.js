@@ -27,7 +27,8 @@ const contractAddress =
       if (accounts.length !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
-        setCurrentAccount(account)
+        setCurrentAccount(account);
+        getAllWaves();
       } else {
         console.log("No authorized account found")
       }
@@ -66,28 +67,34 @@ const getAllWaves = async () => {
         /*
          * Store our data in React State
          */
-        setAllWaves(wavesCleaned);
+        setAllWaves(wavesCleaned.reverse());
       } else {
         console.log("Ethereum object doesn't exist!")
       }
     } catch (error) {
-        alert("Something Went Wrong , Please Try Again");
+        alert("Something Went Wrong , Please Try Again \n Check If Wallet is Connected?");
       console.log(error);
     }
   }
   const connectWallet = async () => {
     try {
-      const { ethereum } = window;
+      const { ethereum } =  window;
 
       if (!ethereum) {
         alert("Get MetaMask Extension!");
         return;
+      } 
+      else if(ethereum.networkVersion != 4)
+      {
+        alert("Change network to Rinkeby Test Network");
+        return;
       }
-
+   
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]); 
+      getAllWaves();  
     } catch (error) {
       console.log(error)
     }
@@ -96,19 +103,12 @@ const getAllWaves = async () => {
   
 
     useEffect(() =>  {
- if (window.ethereum)
- {  
-     if(window.ethereum.networkVersion == 4)
-     {
-      
-      getAllWaves();
-     }
-    else
-       alert("Change network to Rinkeby Test Network");
+     checkIfWalletIsConnected();
+     callWavesIfUpdated();
+  }, []);
 
-      
- }
- 
+  const callWavesIfUpdated  = async () =>
+  {
     let wavePortalContract;
 
   
@@ -129,8 +129,7 @@ const getAllWaves = async () => {
         wavePortalContract.off('NewWave', onNewWave);
       }
     };
-  }, []);
-
+  }
   const onNewWave = (from, timestamp, message) => {
     console.log('NewWave', from, timestamp, message);
     setAllWaves((prevState) => [
@@ -140,7 +139,7 @@ const getAllWaves = async () => {
         timestamp: new Date(timestamp * 1000),
         message: message,
       },
-    ]);
+    ].reverse());
   };
 
  const wave = async (message) => {
@@ -165,7 +164,7 @@ const getAllWaves = async () => {
           gasLimit: 300000,
         });
         console.log("Mining..." , waveTxn.hash);
-        alert("Mining..." +  waveTxn.hash);
+        alert("Mining..." +  waveTxn.hash + "\n" + "Click OK and wait for a while until transaction is mined");
 
         await waveTxn.wait();
         console.log("Mined -- { waveTxn.hash}");
@@ -180,7 +179,7 @@ const getAllWaves = async () => {
           alert("Ethereum object doesn't exist!");
       }
     } catch (error) {
-      alert("Something Went Wrong , Please Try Again");
+      alert("Something Went Wrong , Please Try Again\nCheck If Wallet is Connected?");
       console.log(error);
     }
 }
